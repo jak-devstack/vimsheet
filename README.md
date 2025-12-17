@@ -1,16 +1,30 @@
-# iBhagwan's (n)vim cheatsheet
+## <a id="quick-ref">Ref</a>
+```vim
+:w              " write the current file
+:w {file}       " write to {file}
+:wq :x ZZ       " write the current file and quit
+:q! ZQ          " quit and throw away unsaved changes
+%               " jump to matching parenthesis ([{}])
 
-\*\*This cheatsheet was inspired by [Hackjutsu's Vim cheatsheet](https://github.com/hackjutsu/vim-cheatsheet) and Laurent Gregoire's excellent [Vim Quick Reference Card](http://tnerual.eriogerg.free.fr/vimqrc.html).
+<ctrl-b>        " move back one full screen
+<ctrl-f>        " move forward one full screen
 
-I've been using vi for over 20 years but always limited it's use for basically only editing \*nix system config files, recently I (re-)discovered (n)vim as the magical editor that it is and decided to make it my main editor for coding, writing markdown and the likes so down the rabbit hole I went. The more I researched the more I fell in love with the software, the below is the accumulation of all my notes and findings.
+yy              " yank (copy) a line
+yw              " yank (copy) to the next word
+p P             " (p)ut or (p)aste clipboard after, before cursor
+dd D            " delete (cut) entire line, to end of line
+>>              " indent current line right
+<<              " indent current line left
+=%              " indent current block of code
 
-The cheatsheet assumes at least minimal understanding of motions and operators, to better understand motions, operators and how it all comes together in what is referred to as "the vim language" I highly recommend reading [Jim Denis's stackoverflow answer: Your problem with Vim is that you don't grok vi](https://gist.github.com/nifl/1178878).
+ab              " select a block with ()
+aB              " select a block with {}
 
-Note that everything below works with vanilla vim/nvim and does not require the use of any plugins. I am not opposed to plugins and even use a few which I find extremely helpful but as a philosophy I try to use as much built-in functionality (with minimal keymap changes) as I can before turning to plugins. As you can see below there is **so much** you can do with vanilla Vim that I decided to leave plugins out of the scope of this document. If you'd like to take a look at my custom mappings and plugins, refer to my nvim lua configuration at [nvim-lua](https://github.com/ibhagwan/nvim-lua).
-
-If you'd like to take your Vim to the next level, I highly recommend watching all of [Drew Neil's VimCasts](http://vimcasts.org/episodes/page/8/) they are absolutely wonderful and will blow your mind. When you're ready to jump in the water and test your skills [Vimgolf](http://www.vimgolf.com) is fantastic exercise which will cement all your Vim knowledge and add new tricks to your arsenal. Download [Vimgolf client from here](https://github.com/igrigorik/vimgolf) or it's [lesser known python client by Daniel Stein](https://github.com/dstein64/vimgolf) if you wish to avoid the ruby dependencies.
-
-**Thanks to [/u/-romainl-](https://www.reddit.com/user/-romainl-/) for [his great feedback](https://www.reddit.com/r/vim/comments/gha79v/i_wrote_an_advanced_comprehensive_cheatsheet_for/fq7qeop?utm_source=share&utm_medium=web2x) correcting previous inaccuracies.**
+gt or :tabnext or :tabn     " goto to the next tab
+:tabonly or :tabo           " close all tabs except for the current one
+g<                          " view last command (:<cmd>!) output
+:help {keyword}  
+```
 
 
 ### Table of contents:
@@ -43,6 +57,7 @@ If you'd like to take your Vim to the next level, I highly recommend watching al
 - [Ctrl-R and the Expression Register](#ctrl-r-and-the-expression-register)
 - [Comparing buffers with vimdiff](#comparing-buffers-with-vimdiff)
 - [Folding](#folding)
+
 
 ## <a id="saving-exiting-vim">Saving & Exiting Vim</a>
 ```vim
@@ -129,8 +144,7 @@ g; g,           " cycle backwards, forwards in `:changes` (edit locations)
 ## <a id="Editing">Editing</a>
 ### <a id="insert-exit">Insert & Exit</a>
 ```vim
-<Esc>           " exit insert mode
-<ctrl-c>        " exit insert mode
+<Esc>or<ctrl-c> " exit insert mode
 i a             " insert before, after the cursor
 I A             " insert at beginning, end of line
 gi gI           " insert at last insert location, first column
@@ -832,3 +846,18 @@ zd                      " delete surrounding fold at the cursor
 zD                      " recursively delete surrounding fold
 zE                      " delete all folds in current window
 ```
+
+
+# iBhagwan's (n)vim cheatsheet
+
+\*\*This cheatsheet was inspired by [Hackjutsu's Vim cheatsheet](https://github.com/hackjutsu/vim-cheatsheet) and Laurent Gregoire's excellent [Vim Quick Reference Card](http://tnerual.eriogerg.free.fr/vimqrc.html).
+
+I've been using vi for over 20 years but always limited it's use for basically only editing \*nix system config files, recently I (re-)discovered (n)vim as the magical editor that it is and decided to make it my main editor for coding, writing markdown and the likes so down the rabbit hole I went. The more I researched the more I fell in love with the software, the below is the accumulation of all my notes and findings.
+
+The cheatsheet assumes at least minimal understanding of motions and operators, to better understand motions, operators and how it all comes together in what is referred to as "the vim language" I highly recommend reading [Jim Denis's stackoverflow answer: Your problem with Vim is that you don't grok vi](https://gist.github.com/nifl/1178878).
+
+Note that everything below works with vanilla vim/nvim and does not require the use of any plugins. I am not opposed to plugins and even use a few which I find extremely helpful but as a philosophy I try to use as much built-in functionality (with minimal keymap changes) as I can before turning to plugins. As you can see below there is **so much** you can do with vanilla Vim that I decided to leave plugins out of the scope of this document. If you'd like to take a look at my custom mappings and plugins, refer to my nvim lua configuration at [nvim-lua](https://github.com/ibhagwan/nvim-lua).
+
+If you'd like to take your Vim to the next level, I highly recommend watching all of [Drew Neil's VimCasts](http://vimcasts.org/episodes/page/8/) they are absolutely wonderful and will blow your mind. When you're ready to jump in the water and test your skills [Vimgolf](http://www.vimgolf.com) is fantastic exercise which will cement all your Vim knowledge and add new tricks to your arsenal. Download [Vimgolf client from here](https://github.com/igrigorik/vimgolf) or it's [lesser known python client by Daniel Stein](https://github.com/dstein64/vimgolf) if you wish to avoid the ruby dependencies.
+
+**Thanks to [/u/-romainl-](https://www.reddit.com/user/-romainl-/) for [his great feedback](https://www.reddit.com/r/vim/comments/gha79v/i_wrote_an_advanced_comprehensive_cheatsheet_for/fq7qeop?utm_source=share&utm_medium=web2x) correcting previous inaccuracies.**
